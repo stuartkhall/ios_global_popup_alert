@@ -1,0 +1,11 @@
+Provides a popup alert for iOS similar to Instagram's error messages.
+
+Requires the QuartzCore framework
+
+example:
+
+#import "GlobalPopupAlert.h"
+
+...
+
+[GlobalPopupAlert show:@"My Message" andFadeOutAfter:5];
