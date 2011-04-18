@@ -8,13 +8,15 @@
 
 
 @interface GlobalPopupAlert : NSObject {
-@private
+@protected
     UIView* roundView;
     UILabel* label;
+    double alpha;
 }
 
 @property (nonatomic, retain) UIView* roundView;
 @property (nonatomic, retain) UILabel* label;
+@property double alpha;
 
 /**
  * Displays the alert with the specific string
@@ -45,5 +47,15 @@
  * Sets the label color
  **/
 + (void)setLabelColor:(UIColor*)color;
+
+/**
+ * Sets the height
+**/
++ (void)setHeight:(double)h;
+
+/**
+ * Sets the alpha
+ **/
++ (void)setAlpha:(double)a;
 
 @end

@@ -23,6 +23,7 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
 
 @synthesize roundView;
 @synthesize label;
+@synthesize alpha;
 
 + (UIWindow*)mainWindow {
     return [UIApplication sharedApplication].keyWindow;
@@ -52,6 +53,7 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
         
         // Label
         label = [[UILabel alloc] initWithFrame:roundView.bounds];
+        label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = UITextAlignmentCenter;
@@ -101,7 +103,7 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
     
 	instance.roundView.center = [self mainWindow].center;
 	instance.label.text = text;
-	instance.roundView.alpha = 1;
+	instance.roundView.alpha = instance.alpha;
 	instance.roundView.hidden = NO;
     
     [[self mainWindow] addSubview:instance.roundView];
@@ -187,6 +189,25 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
 **/
 - (void)deviceOrientationDidChange:(void*)object {
     [self updateForOrientation:YES];
+}
+
+/**
+ * Sets the height
+ **/
++ (void)setHeight:(double)h {
+    GlobalPopupAlert* instance = [GlobalPopupAlert sharedInstance];
+    CGRect r = instance.roundView.frame;
+    r.size.height = h;
+    instance.roundView.frame = r;
+	instance.roundView.center = [self mainWindow].center;
+}
+
+/**
+ * Sets the alpha
+ **/
++ (void)setAlpha:(double)a {
+    GlobalPopupAlert* instance = [GlobalPopupAlert sharedInstance];
+    instance.alpha = a;
 }
 
 @end
