@@ -52,11 +52,12 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
         [[self.roundView layer] setCornerRadius:10.0];
         
         // Label
-        label = [[UILabel alloc] initWithFrame:roundView.bounds];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, GLOBAL_POPUP_WIDTH-20, GLOBAL_POPUP_HEIGHT)];
         label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = UITextAlignmentCenter;
+        label.numberOfLines = 0;
         [roundView addSubview:label];
         
         // Set for the current orientation
