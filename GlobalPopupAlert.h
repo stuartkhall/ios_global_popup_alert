@@ -29,6 +29,11 @@
 + (void)show:(NSString*)text andFadeOutAfter:(double)secs;
 
 /**
+ * Displays the alert with the specific string and fades out
+ **/
++ (void)show:(NSString*)text andFadeOutAfter:(double)secs inView:(UIView*)view;
+
+/**
  * Hides the popup immediately
  **/
 + (void)hide;

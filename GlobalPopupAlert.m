@@ -95,19 +95,23 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
     return instance;
 }
 
-/**
- * Displays the alert with the specific string
-**/
-+ (void)show:(NSString*)text {
++ (void)show:(NSString *)text inView:(UIView*)view {
     GlobalPopupAlert* instance = [GlobalPopupAlert sharedInstance];
     [instance.roundView removeFromSuperview];
     
-	instance.roundView.center = [self mainWindow].center;
+	instance.roundView.center = view.center;
 	instance.label.text = text;
 	instance.roundView.alpha = instance.alpha;
 	instance.roundView.hidden = NO;
     
-    [[self mainWindow] addSubview:instance.roundView];
+    [view addSubview:instance.roundView]; 
+}
+
+/**
+ * Displays the alert with the specific string
+**/
++ (void)show:(NSString*)text {
+    [self show:text inView:[self mainWindow]];
 }
 
 /**
@@ -115,6 +119,14 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
  **/
 + (void)show:(NSString*)text andFadeOutAfter:(double)secs {
     [GlobalPopupAlert show:text];
+    [GlobalPopupAlert fadeOutAfter:secs];
+}
+
+/**
+ * Displays the alert with the specific string and fades out
+ **/
++ (void)show:(NSString*)text andFadeOutAfter:(double)secs inView:(UIView*)view {
+    [self show:text inView:view];
     [GlobalPopupAlert fadeOutAfter:secs];
 }
 
