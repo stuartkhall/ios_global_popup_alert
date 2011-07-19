@@ -209,9 +209,12 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
  **/
 + (void)setHeight:(double)h {
     GlobalPopupAlert* instance = [GlobalPopupAlert sharedInstance];
-    CGRect r = instance.roundView.frame;
-    r.size.height = h;
-    instance.roundView.frame = r;
+    if (UIDeviceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        instance.roundView.frame = CGRectMake(0, 0, h, GLOBAL_POPUP_WIDTH);
+    }
+    else {
+        instance.roundView.frame = CGRectMake(0, 0, GLOBAL_POPUP_WIDTH, h);
+    }
 	instance.roundView.center = [self mainWindow].center;
 }
 
