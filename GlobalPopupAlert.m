@@ -105,6 +105,14 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
 	instance.roundView.hidden = NO;
     
     [view addSubview:instance.roundView]; 
+    
+    // Autosize
+    CGSize rsz = [instance.label.text 
+                  sizeWithFont:instance.label.font 
+                  constrainedToSize:CGSizeMake(instance.label.bounds.size.width, INT_MAX) 
+                  lineBreakMode:UILineBreakModeWordWrap];
+    
+    [self setHeight:rsz.height+40];
 }
 
 /**
