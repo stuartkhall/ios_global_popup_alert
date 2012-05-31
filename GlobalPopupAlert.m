@@ -53,7 +53,7 @@ static int const GLOBAL_POPUP_HEIGHT = 70;
         
         // Label
         label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, GLOBAL_POPUP_WIDTH-20, GLOBAL_POPUP_HEIGHT)];
-        label.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = UITextAlignmentCenter;
